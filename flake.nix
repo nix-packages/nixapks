@@ -14,6 +14,17 @@
         inherit system;
         config = {
           android_sdk.accept_license = true;
+          # i dont understand why this is needed, but it is
+          allowUnfreePredicate =
+            pkg:
+            builtins.elem (pkgs.lib.getName pkg) [
+              "android-sdk-cmdline-tools"
+              "android-sdk-platform-tools"
+              "android-sdk-tools"
+              "android-sdk-emulator"
+              "android-sdk-build-tools"
+              "android-sdk-platforms"
+            ];
         };
       };
 
