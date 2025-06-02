@@ -1,5 +1,4 @@
-{pkgs, ...}:
-
+{ pkgs, ... }:
 
 let
   buildToolsVersion = "34.0.0";
@@ -55,6 +54,5 @@ pkgs.stdenv.mkDerivation rec {
   installPhase = ''
     cp app/build/outputs/apk/release/app-release.apk $out
   '';
-
 
 }
