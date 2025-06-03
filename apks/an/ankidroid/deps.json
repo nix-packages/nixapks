@@ -852,6 +852,23 @@
    "jar": "sha256-slmV+nsiDTX7uOMl3wcfgpFpG/uv+XNMmOOPRewqc+4=",
    "pom": "sha256-IggjjUccCrksasegWaCp7INdWuE5Kq8Lsk5FW3D9a0s="
   },
+  "com/android/tools/external/org-jetbrains#uast/31.7.2": {
+   "jar": "sha256-RoKCgelqPFLBTbJnhztHEhrZd1jmVAE824Xnu2rdks8=",
+   "pom": "sha256-jR88F9H2cIMG70Da7Qr1cDFMzTMuaX5li1nWzFfDcpc="
+  },
+
+
+  "com/android/tools/external/com-intellij#intellij-core/31.7.2": {
+   "jar": "sha256-dzvqygC0DT5pJBFdcOHbFJ8wZSHSRCjZFS/4Ly5Larw=",
+   "pom": "sha256-3Sx1HAn1TS+7U0L1N/BDVmokAMiQC9P337Wtm7Pu3YE="
+  },
+
+  "com/android/tools/external/com-intellij#kotlin-compiler/31.7.2": {
+   "jar": "sha256-H7i3iF5DUl6+RgvVWsr6HkN4Xof7ifz0e6hwm85H+bA=",
+   "pom": "sha256-3WNC07Fcs5QBdUSTy3EKQ6jNalTFMXqgwp82SJDjUxk="
+  },
+
+
   "com/android/tools#annotations/31.7.2": {
    "jar": "sha256-slmV+nsiDTX7uOMl3wcfgpFpG/uv+XNMmOOPRewqc+4=",
    "pom": "sha256-gPvd6AprCtEgkWukhxS0YppDEhBuASGe4dZxuykI2OU="
@@ -2169,7 +2186,8 @@
    "pom": "sha256-Ku41I3FfjyzRCyYDyNGeVhrHWDELfiyYU5RtLF57S/c="
   },
   "com/google/errorprone#error_prone_annotations/2.15.0": {
-   "pom": "sha256-e65hfjJoHruyicIDyQX2RsKgOXWYr3htlhpUqqPSseY="
+   "pom": "sha256-e65hfjJoHruyicIDyQX2RsKgOXWYr3htlhpUqqPSseY=",
+    "jar": "sha256-BnBHcUNJ53iaW9v62dHAr586HrKMVaDuP2jmgvkFxOs="
   },
   "com/google/errorprone#error_prone_annotations/2.18.0": {
    "jar": "sha256-nmgUy3GBaYik/RsHqZOo8hu3BY1SLBYrHehJ4ZvqVK4=",
@@ -2215,6 +2233,7 @@
    "pom": "sha256-xyjbbycFyj6mo88s8SYNvv86RSQkmhsbkA7c/p1yFC8="
   },
   "com/google/guava#listenablefuture/1.0": {
+    "jar": "sha256-5K12B+XAR3xviQ7yaknLjRu03/tlC6tFAq/uZGROMGk=",
    "pom": "sha256-U4c8rya8HtilZ+psk5qyqqP0el4y1creld31CA0jI4o="
   },
   "com/google/guava#listenablefuture/9999.0-empty-to-avoid-conflict-with-guava": {
@@ -2841,7 +2860,9 @@
    "pom": "sha256-im5GDu34zHuF0zx1YhPmpfeHX0qDg9U10ZnzIR7CNVw="
   },
   "org/ow2/asm#asm-commons/9.6": {
-   "pom": "sha256-qYrkiVM0uvj/hr1mUWIQ29mgPxpuFeR92oKvz2tT13w="
+   "pom": "sha256-qYrkiVM0uvj/hr1mUWIQ29mgPxpuFeR92oKvz2tT13w=",
+    "jar": "sha256-eu/Q1cCQFwHGn3UT/tp2X7a+M68s56oXxXgfyHZXxRE="
+
   },
   "org/ow2/asm#asm-tree/9.5": {
    "jar": "sha256-PDOmSBkQea6urrfBmkmxU5UvnkD+hvusUgVVTd2azZQ=",
