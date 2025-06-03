@@ -52,6 +52,7 @@ pkgs.stdenv.mkDerivation (finalAttrs: rec {
     data = ./deps.json;
   };
   ANDROID_HOME = "${androidComposition.androidsdk}/libexec/android-sdk";
+  gradleFlags = "-Dorg.gradle.project.android.aapt2FromMavenOverride=${finalAttrs.ANDROID_HOME}/build-tools/${buildToolsVersion}/aapt2";
 
   gradleBuildTask = "assembleRelease";
   doCheck = true;
