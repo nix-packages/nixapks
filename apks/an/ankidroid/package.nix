@@ -22,9 +22,10 @@ let
       "mips-android-sysimage-license"
     ];
   };
+  gradle = pkgs.gradle_8;
 in
 
-pkgs.stdenv.mkDerivation rec {
+pkgs.stdenv.mkDerivation (finalAttrs: rec {
   name = "ankidroid-${version}.apk";
   version = "2.20.1";
 
@@ -37,22 +38,29 @@ pkgs.stdenv.mkDerivation rec {
 
   nativeBuildInputs = [
     androidComposition.androidsdk
+    gradle
     (with pkgs; [
-      gradle
       temurin-bin
       keepBuildTree
+      git
     ])
   ];
 
+  mitmCache = gradle.fetchDeps {
+    # pname = "ankidroid";
+    pkg = finalAttrs;
+    data = ./deps.json;
+  };
   ANDROID_HOME = "${androidComposition.androidsdk}/libexec/android-sdk";
-  gradleFlags = "-Dorg.gradle.project.android.aapt2FromMavenOverride=${ANDROID_HOME}/build-tools/${buildToolsVersion}/aapt2";
 
-  buildPhase = ''
-    gradle assembleRelease --info --offline --full-stacktrace ${gradleFlags}
-  '';
+  gradleBuildTask = "assembleRelease";
+  doCheck = true;
+
 
   installPhase = ''
     cp app/build/outputs/apk/release/app-release.apk $out
   '';
 
-}
+
+})
+
