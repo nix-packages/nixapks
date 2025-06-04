@@ -3,13 +3,14 @@
 let
   buildToolsVersion = "34.0.0";
   platformVersion = "35";
-  systemImageType = "google_apis";
   androidComposition = pkgs.androidenv.composeAndroidPackages {
     buildToolsVersions = [ buildToolsVersion ];
     platformToolsVersion = "35.0.2";
     platformVersions = [ platformVersion ];
     emulatorVersion = "35.2.5";
     includeEmulator = true;
+    includeSystemImages = true;
+    systemImageTypes = [ "google_apis"];
     abiVersions = [ "armeabi-v7a" "arm64-v8a" "x86_64" ];
     extraLicenses = [
       "android-googletv-license"
@@ -36,6 +37,12 @@ pkgs.stdenv.mkDerivation (finalAttrs: rec {
     hash = "sha256-CPCczLovuQTjUTWgjVjgZ8PL4idlcTzWZ2wKwqsF+cg=";
   };
 
+  # in postPatch we patch the gradle.properties file to use more ram
+
+  postPatch = ''
+    substituteInPlace gradle.properties \
+      --replace-fail "org.gradle.jvmargs=-Xmx3072M" "org.gradle.jvmargs=-Xmx4096M"
+  '';
   nativeBuildInputs = [
     androidComposition.androidsdk
     gradle
@@ -43,6 +50,7 @@ pkgs.stdenv.mkDerivation (finalAttrs: rec {
       temurin-bin
       keepBuildTree
       git
+      # jdk21
     ])
   ];
 
@@ -52,11 +60,12 @@ pkgs.stdenv.mkDerivation (finalAttrs: rec {
     data = ./deps.json;
   };
   ANDROID_HOME = "${androidComposition.androidsdk}/libexec/android-sdk";
-  gradleFlags = "-Dorg.gradle.project.android.aapt2FromMavenOverride=${finalAttrs.ANDROID_HOME}/build-tools/${buildToolsVersion}/aapt2";
+  gradleFlags = "  -PsigningConfigs.skip=true -Duniversal-apk=true -Dorg.gradle.project.android.aapt2FromMavenOverride=${finalAttrs.ANDROID_HOME}/build-tools/${buildToolsVersion}/aapt2";
 
-  gradleBuildTask = "assembleRelease";
+  gradleBuildTask = "assembleDebug";
   doCheck = true;
 
+  gradleUpdateTask = "assembleDebug";
 
   installPhase = ''
     cp app/build/outputs/apk/release/app-release.apk $out

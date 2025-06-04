@@ -24,6 +24,7 @@
               "android-sdk-emulator"
               "android-sdk-build-tools"
               "android-sdk-platforms"
+              "android-sdk-system-image-35-google_apis-arm64-v8a-system-image-35-google_apis-x86_64"
             ];
         };
       };
